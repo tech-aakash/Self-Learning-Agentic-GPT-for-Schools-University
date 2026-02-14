@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agentic RAG Chat</title>
 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+    <div class="chat-card">
+        <div class="header">
+            <span>Self Learning Agentic GPT for Schools & University</span>
+            <button class="clear-btn" onclick="clearChat()">
+                🗑 Clear
+            </button>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+            {% for msg in messages %}
+                {% if msg.role == 'user' %}
+                    <div class="message-row user">
+                        {% if msg.question_type %}
+                            {% set qt = msg.question_type %}
+                            <span class="badge
+                                {% if qt == 'simple' %} badge-simple
+                                {% elif qt == 'difficult' %} badge-difficult
+                                {% elif qt == 'counter-cue' %} badge-counter
+                                {% endif %}
+                            ">
+                                {% if qt == 'simple' %}
+                                    Simple
+                                {% elif qt == 'difficult' %}
+                                    Difficult
+                                {% elif qt == 'counter-cue' %}
+                                    Follow-up
+                                {% else %}
+                                    {{ qt }}
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                        <div class="message-bubble">{{ msg.content }}</div>
+                    </div>
+                {% else %}
+                    <div class="message-row assistant">
+                        <div class="message-bubble">{{ msg.content }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="input-bar">
+            <input id="user-input" placeholder="Ask a question..." />
+            <button type="button" onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+</div>
+
+<script>
+async function clearChat() {
+    await fetch("/clear", { method: "POST" });
+    location.reload();
+}
+
+function labelForType(qType) {
+    if (qType === "simple") return "Simple";
+    if (qType === "difficult") return "Difficult";
+    if (qType === "counter-cue") return "Follow-up";
+    return qType || "";
+}
+
+function badgeClass(qType) {
+    if (qType === "simple") return "badge badge-simple";
+    if (qType === "difficult") return "badge badge-difficult";
+    if (qType === "counter-cue") return "badge badge-counter";
+    return "badge";
+}
+
+async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const chatBox = document.getElementById("chat-box");
+
+    // Clear input
+    input.value = "";
+
+    // 1) Add user message immediately (without badge yet)
+    const userId = "user-" + Date.now();
+    chatBox.innerHTML += `
+        <div class="message-row user" id="${userId}">
+            <div class="message-bubble">${text}</div>
+        </div>
+    `;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // 2) Add thinking animation for assistant
+    const thinkingId = "thinking-" + Date.now();
+    chatBox.innerHTML += `
+        <div class="message-row assistant" id="${thinkingId}">
+            <div class="message-bubble thinking">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    `;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        // 3) Call backend
+        const res = await fetch("/chat", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ message: text })
+        });
+
+        const data = await res.json();
+
+        // Small delay so you can actually SEE the thinking animation
+        await new Promise(r => setTimeout(r, 300));
+
+        // 4) Upgrade user message with badge using question_type ONLY for normal chats
+        const userRow = document.getElementById(userId);
+        if (userRow && data.question_type) {
+            const bubble = userRow.querySelector(".message-bubble");
+            const badgeHtml = `<span class="${badgeClass(data.question_type)}">${labelForType(data.question_type)}</span>`;
+            userRow.innerHTML = badgeHtml + bubble.outerHTML;
+            userRow.removeAttribute("id");
+        }
+
+        // 5) Remove thinking animation
+        const thinkingRow = document.getElementById(thinkingId);
+        if (thinkingRow) {
+            thinkingRow.remove();
+        }
+
+        // 6) Add assistant response (Markdown rendered) - works for both normal and quiz replies
+        chatBox.innerHTML += `
+            <div class="message-row assistant">
+                <div class="message-bubble markdown">
+                    ${marked.parse(data.answer)}
+                </div>
+            </div>
+        `;
+
+        // 7) If a quiz has been triggered, show the quiz question as a separate assistant bubble
+        if (data.quiz_question) {
+            chatBox.innerHTML += `
+                <div class="message-row assistant">
+                    <div class="message-bubble markdown">
+                        ${marked.parse("📝 **Quiz time!** " + data.quiz_question)}
+                    </div>
+                </div>
+            `;
+        }
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+    } catch (err) {
+        console.error(err);
+        const thinkingRow = document.getElementById(thinkingId);
+        if (thinkingRow) {
+            thinkingRow.remove();
+        }
+        chatBox.innerHTML += `
+            <div class="message-row assistant">
+                <div class="message-bubble">⚠️ Error talking to server.</div>
+            </div>
+        `;
+    }
+}
+
+// Optional: send on Enter
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+});
+</script>
+
+</body>
+</html>
