@@ -1,0 +1,152 @@
+[
+  {
+    "ts": "2026-02-14T10:25:31.607467+00:00",
+    "user": "what is machine learning?",
+    "bot": "Machine learning is the science (and art) of programming computers so they can learn from data. It involves developing computer programs that can improve their performance on a task with experience, without being explicitly programmed.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "unknown",
+      "user_provided"
+    ],
+    "top_score": 0.6592989
+  },
+  {
+    "ts": "2026-02-14T10:25:55.057890+00:00",
+    "user": "Why does correlation-based learning fail under distribution shift?",
+    "bot": "The CONTEXT states that correlation-based learning fails under distribution shift because it confuses **spurious correlations** with **true causation**. This occurs when the relationship observed between variables (correlation) is not causal, but rather due to third-variable confounding or other artifacts. Under distribution shift, the statistical relationship between variables may break down, leading to incorrect conclusions. \n\n**Answer:**  \nCorrelation-based learning fails under distribution shift because it misinterprets spurious correlations (relationships caused by third variables) as true causal relationships, leading to flawed predictions when the underlying data distribution changes.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.9220878
+  },
+  {
+    "ts": "2026-02-14T10:26:15.041929+00:00",
+    "user": "Why does contrastive learning work without labels?",
+    "bot": "I don't know.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6743841
+  },
+  {
+    "ts": "2026-02-14T10:26:50.778877+00:00",
+    "event": "knowledge_added",
+    "teach_origin_question": "Why does contrastive learning work without labels?",
+    "source_type": "user_provided",
+    "knowledge_added": true,
+    "facts_count": 3
+  },
+  {
+    "ts": "2026-02-14T10:27:08.731446+00:00",
+    "user": "Explain the difference between epistemic and aleatoric uncertainty mathematically.",
+    "bot": "I don't know.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6245822
+  },
+  {
+    "ts": "2026-02-14T10:27:13.347591+00:00",
+    "event": "teach_declined",
+    "teach_origin_question": "Explain the difference between epistemic and aleatoric uncertainty mathematically."
+  },
+  {
+    "ts": "2026-02-14T10:28:23.527923+00:00",
+    "user": "What is machine learning?",
+    "bot": "Machine learning is the science and art of programming computers so they can learn from data without being explicitly programmed. It involves developing algorithms that can improve their performance on a task with experience, enabling them to recognize patterns and make decisions based on data.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6668078
+  },
+  {
+    "ts": "2026-02-14T10:29:03.767927+00:00",
+    "user": "Why can adversarial examples exist even for linear model",
+    "bot": "Adversarial examples can exist even for linear models due to their inherent sensitivity to small perturbations in input features. Here's the reasoning:\n\n1. **Linear Model Structure**: Linear models (e.g., linear regression, logistic regression) output predictions as a linear combination of input features. The decision boundary is a hyperplane, and the model's output is directly influenced by the input features.\n\n2. **Sensitivity to Perturbations**: Even minor changes to input features can significantly alter the model's output. This is because the gradient of the loss function (e.g., mean squared error) is constant for linear models. A small perturbation in the input direction aligned with the gradient can cause a large change in the model's prediction.\n\n3. **Adversarial Perturbation**: Attackers craft perturbations (e.g., tiny pixel changes in images) that exploit the model's sensitivity. These perturbations are imperceptible to humans but can flip the model's classification (e.g., a cat image misclassified as a dog).\n\n4. **No Need for Complex Models**: The simplicity of linear models makes them vulnerable to adversarial examples. The model's flat decision boundary and constant gradients allow small, targeted perturbations to disrupt predictions.\n\n**Conclusion**: Linear models are inherently sensitive to small input changes because their decision boundaries are flat and gradients are constant. This vulnerability enables adversarial examples to exist, as attackers can exploit these weaknesses to misclassify inputs.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6572343
+  },
+  {
+    "ts": "2026-02-14T10:34:43.288474+00:00",
+    "user": "what is machine learning?",
+    "bot": "Machine Learning is the science (and art) of programming computers so they can learn from data.",
+    "difficulty": "easy",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "unknown",
+      "user_provided"
+    ],
+    "top_score": 0.6592989
+  },
+  {
+    "ts": "2026-02-14T10:35:12.737610+00:00",
+    "user": "Why does representation collapse occur in non-contrastive SSL methods, and how can it be prevented theoretically?",
+    "bot": "I don't know.",
+    "difficulty": "difficult",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6510609
+  },
+  {
+    "ts": "2026-02-14T10:35:42.524998+00:00",
+    "event": "knowledge_added",
+    "teach_origin_question": "Why does representation collapse occur in non-contrastive SSL methods, and how can it be prevented theoretically?",
+    "source_type": "user_provided",
+    "knowledge_added": true,
+    "facts_count": 3
+  },
+  {
+    "ts": "2026-02-14T10:36:14.590838+00:00",
+    "user": "What causes posterior collapse in VAEs from an information-theoretic perspective?",
+    "bot": "The CONTEXT states that \"the collapse happens because the objective function lacks the necessary forces to keep representations distinct\" and \"without repulsive forces, the model collapses to minimize the loss to zero.\" These statements imply that **lack of regularization (repulsive forces)** in the objective function (e.g., in VAEs, the variational lower bound) causes the latent space to collapse. From an information-theoretic perspective, this occurs because the model cannot distinguish between the true data distribution and the latent space, leading to a loss of diversity in the latent representations. \n\n**Why it happens**:  \n- The objective function (e.g., the variational lower bound) lacks mechanisms to enforce diversity in the latent space, causing the model to collapse to a trivial minimum (e.g., all inputs mapping to a constant vector).  \n- Without repulsive forces (e.g., in contrastive learning or other regularization strategies), the model cannot differentiate between features that cause outcomes and those that merely correlate with them, leading to a loss of information in the latent space.  \n\n**How to prevent it theoretically**:  \n- Introduce **repulsive forces** in the loss function (e.g., by adding a regularization term that penalizes uniformity in the latent space).  \n- Ensure **sufficient data diversity** to enforce distinctness in the latent space, preventing the model from collapsing to a trivial minimum.  \n\n**Conclusion**:  \nPosterior collapse in VAEs arises from the absence of repulsive forces in the objective function, leading to the latent space collapsing. This can be theoretically prevented by enforcing diversity in the latent space through regularization or data augmentation.  \n\n**Answer**:  \nThe posterior collapse in VAEs occurs due to the lack of repulsive forces in the objective function, which prevents the latent space from maintaining diversity. This is theoretically addressed by ensuring the loss function includes mechanisms to enforce diversity (e.g., regularization) and by providing sufficient data diversity to distinguish latent representations.",
+    "difficulty": "difficult",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided"
+    ],
+    "top_score": 0.67598426
+  },
+  {
+    "ts": "2026-02-14T10:36:49.091629+00:00",
+    "user": "Why is exact Bayesian inference in deep neural networks intractable?",
+    "bot": "I don't know.",
+    "difficulty": "difficult",
+    "top_k": 10,
+    "retrieved_any_text": true,
+    "sources": [
+      "user_provided",
+      "unknown"
+    ],
+    "top_score": 0.6391523
+  }
+]

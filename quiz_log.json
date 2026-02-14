@@ -1,0 +1,17 @@
+[
+  {
+    "ts": "2026-02-14T10:36:51.760830+00:00",
+    "event": "asked",
+    "quiz_question": "How does the trade-off between model complexity and generalization affect training stability in deep learning, and what strategies can be employed to balance these factors?",
+    "topic": "Model Training & Generalization",
+    "difficulty": "medium"
+  },
+  {
+    "ts": "2026-02-14T10:37:48.131491+00:00",
+    "event": "graded",
+    "quiz_question": "How does the trade-off between model complexity and generalization affect training stability in deep learning, and what strategies can be employed to balance these factors?",
+    "user_answer": "The trade-off between model complexity and generalization is central to deep learning, directly impacting training stability by influencing the model's susceptibility to overfitting or underfitting. Highly complex models (e.g., deep networks with many parameters) can easily fit training data—reducing training loss—but often fail to generalize to new data due to high variance and sensitivity to noise. Conversely, overly simple models may have high bias, failing to learn the underlying patterns.",
+    "correct": true,
+    "rationale": "The answer directly addresses the trade-off between model complexity and generalization, explaining how complexity can lead to overfitting (high variance) or underfitting (high bias), and identifies strategies like regularization, data augmentation, early stopping, and cross-validation to balance these factors. The response is relevant, accurate, and aligns with the question's requirements."
+  }
+]
