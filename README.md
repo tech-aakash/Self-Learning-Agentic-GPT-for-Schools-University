@@ -1,4 +1,4 @@
-# 🧠 Adaptive RAG Tutor with Quiz & Teach Mode
+# Adaptive RAG Tutor with Quiz & Teach Mode
 
 An advanced **Retrieval-Augmented Generation (RAG)** tutoring system
 built with:
@@ -18,7 +18,7 @@ This system dynamically:
 
 ------------------------------------------------------------------------
 
-# 🚀 Features
+# Features
 
 ## 1️⃣ Strict RAG Answering
 
@@ -63,7 +63,7 @@ This creates a **continuously improving knowledge base**.
 
 ------------------------------------------------------------------------
 
-# 🏗 Architecture Overview
+# Architecture Overview
 
 User → Flask → Difficulty Agent → Retrieval (Qdrant) → RAG Answer Agent\
                                              ↓\
@@ -84,7 +84,7 @@ All agents share a single persistent Ollama model client.
 
 ------------------------------------------------------------------------
 
-# 🧩 Tech Stack
+# Tech Stack
 
 -   Python 3.10+
 -   Flask
@@ -97,7 +97,7 @@ All agents share a single persistent Ollama model client.
 
 ------------------------------------------------------------------------
 
-# ⚙️ Installation
+#  Installation
 
 ## 1️⃣ Install Dependencies
 
@@ -141,7 +141,7 @@ App runs at:
 
 ------------------------------------------------------------------------
 
-# 📁 Project Structure
+# Project Structure
 
     .
     ├── app.py
@@ -153,7 +153,7 @@ App runs at:
 
 ------------------------------------------------------------------------
 
-# 🧠 Retrieval System
+# Retrieval System
 
 -   Embeddings generated via Ollama
 -   Stored in Qdrant collection: `machine-learning`
@@ -166,7 +166,7 @@ App runs at:
 
 ------------------------------------------------------------------------
 
-# 📊 Logging
+# Logging
 
 ## chat_log.json
 
@@ -190,7 +190,7 @@ Stores:
 
 ------------------------------------------------------------------------
 
-# 🔐 Safety & Guardrails
+# Safety & Guardrails
 
 -   Strict JSON extraction for agents
 -   Verification before storing user knowledge
@@ -200,7 +200,7 @@ Stores:
 
 ------------------------------------------------------------------------
 
-# 🔄 Event Loop Architecture
+# Event Loop Architecture
 
 The system runs a persistent async event loop in a background thread:
 
@@ -216,7 +216,7 @@ This prevents:
 
 ------------------------------------------------------------------------
 
-# 📈 Future Improvements
+# Future Improvements
 
 -   Per-user session isolation (currently global state)
 -   URL content ingestion
@@ -227,7 +227,7 @@ This prevents:
 
 ------------------------------------------------------------------------
 
-# 🧑‍💻 Author
+# Author
 
 Built as an adaptive AI tutor combining:
 
@@ -236,11 +236,6 @@ Built as an adaptive AI tutor combining:
 -   Human-in-the-loop learning
 -   Self-improving vector memory
 
-------------------------------------------------------------------------
-
-# 📜 License
-
-MIT License (recommended)
 
 ------------------------------------------------------------------------
 
